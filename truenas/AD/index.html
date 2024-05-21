@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/deff.css">
+    <title>Leif Sigurd Nesheim</title>
+</head>
+<body>
+    <nav>
+        <div class="nav_contianer">
+            <a href="/"><p>Heim</p></a>
+            <div class="dropdown">
+                <p>Sider</p>
+                <div>
+                    <p>Truenas</p>
+                    <a href="/truenas/innstalasjon" >Instalasjon</a>
+                    <a href="/truenas/AD" >Active Direcotory</a>
+                    <a href="/truenas/lagring" >Oppsett av lagringa</a>
+                    <a href="/truenas/forlatDomene">Forlate domene i Truenas</a>
+                    <p>Windows server</p>
+                    <a href="/win-s/polecy" >Polecy</a>
+                    <p>Hyper-v</p>
+                    <a href="/hyper-v/hardisk">Viretuel hardisk</a>
+                    <p>Docker</p>
+                    <a href="/docker/phpapace-mysql" >PHP-  apache og mysql server</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+
+
+<main>
+    <section>
+        <pre>
+
+<h1>Active direcotry</h1>
+Før du begynner må du forsikre om at Truenas og Windows server er kopla på internett. 
+Truenas og Windows server treng å ha same klokkeslett for at Truenas skal kopla seg på AD. 
+Truenas treng og internett for at AD brukarar skal få komme seg in på netverksresursane. 
+Begynn med å sette opp AD og lage grupper og brukarar som du treng.
+
+<h2>Tidssone</h2>
+Inne på Truenas nettsida går du på System > General i menyen til venstre.
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110541764617588837/image.png" alt="">
+Under "Timezone" skriv du "Europe/Oslo"  Windows server må og vere på denne tidssonene. 
+Trykk deretter på "save".
+For å sjekke at klokka er rett kan du gå i Shell i sidemenyen og skrive "date" i terminalen.
+
+<h2>DNS og Gateway</h2>
+Truenas må ha Windows server som DNS server for å få kontakt med domenet. 
+Husk å installere DNS på «Windows server. 
+Gå til Network > Global Configuration i sidemenyen.
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110541624439738498/image.png" alt="">
+Her skriv du inn IP adressa til windows serveren din i feltet "Nameserver 1".
+Her må du og skrive inn default gateway. Du skal skrive inn IP adressa til ruteren din under "IPv4 Default Gateway".
+For å sjekke at DNS virkar kan du gå til Shell i sidemenyen og skrive "ping (ditt-domene)".
+
+<h2>Active Directory</h2>
+Gå til Direcotory Services > Active Directory i sidemenyen.
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110538532843442236/image.png" alt="">
+Skriv inn domenenavnet ditt under "Domanin Name".
+Skriv Administrator under "Domain Account Name".
+Skriv passorded til Administrator kontoen under "Doman Account Password" 
+(Det er det samme passorded som du bruker til å logge på windows server)
+Du skal og hake av avmerkingsboksen under.
+Trykk "save" og deretter "Rebuild Directory Service Cache".
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110540064892661770/image.png" alt="">
+Oppe i høgre hjørne skal det no ha komt eit nytt ikon. Trykk på det få å sjå statusen til AD.
+
+For å sjekk at Truenas kan sjå brukarar og grupper går du till Shell i sidemenyen og skriv "wbinfo -u" for å liste alle brukarar eller "wbinfo -g" for grupper.
+
+<b>Om du legg til eller fjernar brukarar/grupper må du trykker på "Rebuild Directory Service Cache" i Servises > Active Directory. Dette oppdaterer cache til Truenas.</b>
+
+
+
+<a href="/truenas/lagring" class="button">Neste</a>
+
+        </pre>
+    </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/deff.css">
+    <title>Leif Sigurd Nesheim</title>
+</head>
+<body>
+    <nav>
+        <div class="nav_contianer">
+            <a href="/"><p>Heim</p></a>
+            <div class="dropdown">
+                <p>Sider</p>
+                <div>
+                    <p>Truenas</p>
+                    <a href="/truenas/innstalasjon" >Instalasjon</a>
+                    <a href="/truenas/AD" >Active Direcotory</a>
+                    <a href="/truenas/lagring" >Oppsett av lagringa</a>
+                    <a href="/truenas/forlatDomene">Forlate domene i Truenas</a>
+                    <p>Windows server</p>
+                    <a href="/win-s/polecy" >Polecy</a>
+                    <p>Hyper-v</p>
+                    <a href="/hyper-v/hardisk">Viretuel hardisk</a>
+                    <p>Docker</p>
+                    <a href="/docker/phpapace-mysql" >PHP-  apache og mysql server</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+
+<main>
+    <section>
+        <pre>
+
+<h1>Oppset av lagring og deling</h1>
+I dette oppsettet vil det vere eigene mapper til gruppene Elever og Lererar.
+Det vil og vere eigene mapper til alle brukarar som er medlem av domenet. 
+
+<h2>Pool</h2>
+Ein Pool er eit sentralt oppbevaringsplass. Den kan bestå av 1 eller fleire diskar med eller utan raid.
+
+I dette oppsettet vil det vere 2 diskar i raid 1 og kjent som spegling. Dei to diskane speglar kvarandre. 
+Dette gir deg ein backup disk som er klar til bruk når som helst.
+
+Gå til Storage > Pools I sidemenyen. 
+Og trykk på add oppe i høgre hjørne.
+velg "Create new pool" og trykk "Create pool".
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110599192398790848/image.png" alt="">
+Gi poolen eit nav til dømes main.
+Hak av avmerkingsboksen til dei diskane du vil bruke som lagring og trykk på den øverste blå pila.
+I dropdown menyen under "Data VDevs" boksen kan du velge kva type raid du vill bruke.
+Om du velger "Stripe" får du utnytta begge diskane til lagring men du har ingen backup.
+Om du velg "Mirror" får du berre brukt 1 disk men den andre disken blir ein backup.
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110601119748608121/image.png" alt="">
+Deretter trykk du på "create".
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110601740367175700/image.png" alt="">
+Om du får denne erroren er det berre å ignorere.
+
+<h2>Datasett og tillatelsar</h2>
+Datasetta vi lager vil bli dei delte mappene me ser i filutforskar når me kopla oss opp mot Truenas.
+
+For å lage eit datasett trykker du på dei tre prikkane under Poolen din.
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110603508840923226/image.png?width=1440&height=218" alt="">
+Trykk dretter på Add Dataset.
+I denne menyen treng du berre gi datasettet eit navn. Gi datasettet det samme navnet som dei skal tilgang til har. Til dømes gruppa Elever.
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110604842969337886/image.png" alt="">
+Får å sette tilatelsar på datasetta trykk du på dei tre prikkane på det datasettet du vil endre på.
+Etter det trypp på "Use ACL manager"
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110628016796741784/image.png" alt="">
+I dropdownen er velger du "restricted".
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110629776537944064/image.png" alt="">
+User: Er den brukaren som eiger datasettet.
+Group: Er den gruppa som eiger datasettet.
+For å gi AD brukarar og grupper eigerskap må du skrive "(domenenavn)\(brukernavn)"
+Du må hak av "Apply User" / "Apply Group" for at endringane skal bli lagra.
+<img src="https://cdn.discordapp.com/attachments/662370682562281482/1110630767324823622/image.png" alt="">
+Her sett du permissios til "Full controll".
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110636579036340337/image.png" alt="">
+Hak av "Apply permissions recursively" og "Apply permissions to child datasets".
+
+Dette gjer du med alle datasetta som spesifikke brukarar eller grupper skal ha tillgang till.
+
+For å gi brukarar tillgang til desse datasetta må du dele dei.
+Gå til Sharing > Windows Shares (SMB) i sidemenyen. 
+Trykk "Add" oppe i høgre hjørne.
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110649773758894210/image.png" alt="">
+Naviger deg fram til datasettet du vil dele og sjekk at det står rett navn i "name". 
+Deretter trykk "submit".
+
+Dette gjer du med alle datasetta som brukarar skal ha tilgang til.
+
+<h2>Private mapper</h2>
+Lag eit eget datasett med navn Domain_users.
+Gå til Sharing > Windows Shares (SMB) i sidemenyen. 
+Lag ein ny share og naviger deg til Domain_users datasettet.
+Trykk på "advanced options".
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110652345156649061/image.png?width=771&height=683" alt="">
+Sett "purpose" til "Private SMB Datasets and Shares".
+Skru av "Browsable to Network Clients" under "Accses"
+Har av "Use as home Share" under "Other options"
+Deretter trykk "submit".
+
+Neste gong du gjer sign inn med ein brukar blir det oppretta eit datasett til brukaren.
+Dette datasettet har berre den brukaren tillgong til.
+Grupper som brukaren er medlem i som eiger datasett har og brukaren lese og skrive tilgong til.
+
+For å kople seg til kan du skrive "\\truenas.(domenenavn)\" i søkefeltet til fileutforsker.
+
+
+<a href="/win-s/polecy" class="button">Neste</a>
+
+        </pre>
+    </section>
+</main>
+</body>
+</html>

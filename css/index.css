@@ -1,0 +1,150 @@
+
+	@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+::-webkit-scrollbar {
+    width: 11px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #36393f;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2f3136;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #202225;
+  }
+html, body{
+  background: #111;
+}
+*{
+   color: white;
+  padding: 0;
+  margin: 0;
+}
+nav{
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: cornflowerblue;
+  z-index: 999;
+  outline: 1px solid #111;
+}
+.nav_contianer{
+  height: 100%;
+  width: min(100%, 900px);
+  display: flex;
+  align-items: center;
+  padding: 0 10px 0 10px
+}
+nav a{
+  text-decoration: none;
+  font-family: quicksand, roboto;
+  font-size: 18px;
+  color: darkgray;
+  transition: .2s;
+  display: block;
+}
+nav a p:hover{
+  color: lightblue;
+}
+.dropdown a:hover{
+  color: cornflowerblue;
+}
+nav p{
+  color: white;
+  font-size: 25px;
+  margin-right: 20px;
+}
+.dropdown{
+  font-family: quicksand;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.dropdown p{
+  margin: 0;
+}
+.dropdown::after{
+  content: '';
+  display: inline-block;
+  background-image: url(https://img.gamehub.community/kvitpil.png);
+  height: 20px;
+  width: 20px;
+  margin-left: 10px;
+  background-position: center;
+  background-size: cover;
+  transition: .1s;
+}
+.dropdown:hover div{
+  display: block;
+}
+.dropdown:hover::after{
+  transform: rotate(90deg);
+}
+.dropdown div{
+  display: none;
+  border-radius: 10px;
+  outline: 1px solid #111;
+  background: #222;
+  position: absolute;
+  top: 60px;
+  margin-left: -10px;
+  padding: 10px;
+  width: max-content;
+  box-shadow: 0 0 10px rgba(59, 59, 59, 0);
+}
+
+main{
+  background: radial-gradient(white 60%, rgb(180, 180, 180));    
+}
+section{
+    min-height: calc(100vh - 90px);
+    height: calc(100% - 20px);
+    width: min(calc(100% - 40px), calc(900px - 40px));
+    padding: 20px 20px 0 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(9, max-content);
+    margin-inline: auto;
+    background: #111111;
+    gap: 20px;
+    border-left: 5px solid cornflowerblue;
+    box-shadow: 5px 6px 0 6px rgb(0, 0, 0, .8);
+}
+h1{
+    color: white;
+    font-family: quicksand;
+    grid-column: span 3;
+    text-shadow: 0 0 1px #111;
+    margin-top: 20px;
+
+}
+h1:first-child{
+  margin-top: 0px;
+
+}
+a:has(.card){
+    text-decoration: none;
+    height: 100%;
+}
+.card{
+    border-radius: 5px;
+    outline: 3px solid cornflowerblue;
+    background: rgb(0, 0, 0, .8);
+    padding: 10px;
+    color: darkgray;
+    font-family: roboto;
+    font-size: 15px;
+    height: calc(100% - 20px);
+    transition: .2s;
+    backdrop-filter: ;
+}
+.card:hover{
+  outline: 3px solid blue;
+  background: black;
+}
+.card p{
+    color: white;
+    font-size: 20px;
+}

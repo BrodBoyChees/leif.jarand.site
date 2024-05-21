@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/deff.css">
+    <title>Leif Sigurd Nesheim</title>
+</head>
+<body>
+    <nav>
+        <div class="nav_contianer">
+            <a href="/"><p>Heim</p></a>
+            <div class="dropdown">
+                <p>Sider</p>
+                <div>
+                    <p>Truenas</p>
+                    <a href="/truenas/innstalasjon" >Instalasjon</a>
+                    <a href="/truenas/AD" >Active Direcotory</a>
+                    <a href="/truenas/lagring" >Oppsett av lagringa</a>
+                    <a href="/truenas/forlatDomene">Forlate domene i Truenas</a>
+                    <p>Windows server</p>
+                    <a href="/win-s/polecy" >Polecy</a>
+                    <p>Hyper-v</p>
+                    <a href="/hyper-v/hardisk">Viretuel hardisk</a>
+                    <p>Docker</p>
+                    <a href="/docker/phpapace-mysql" >PHP-  apache og mysql server</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+
+<main>
+    <section>
+        <pre>          
+<h1>Installasjon av Truenas-core</h1>
+<h2>ISO</h2>
+Last ned Truenascore på <a target="_blank" href="https://www.truenas.com/download-truenas-core/?location=hero">"Lenke"</a>. 
+Du må «Join the Community» for å få tilgang til nedlastinga. 
+Bruk rufus, ventoy eller liknande program till å gjere ISOen oppstartbar på ein minnepinne.
+
+<h2>Installasjon</h2>
+Truneas versjon brukt er TrueNAS-13.0-U3.1. 
+Begynn med å sette minnepinnen inn i maskina du skal installere på. 
+Om alt er rett skall du få opp denne skjermen. 
+Om ikkje bør du skjekke boot orderen i bios.
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110493480934977536/image.png" alt="">
+Du kan enten trykke Enter eller vente 10 sekund. 
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110493572437921812/image.png" alt="">
+Her skall «Instqall/Upgrade» vera markert. Brukt piltastane til å navigere deg rundt. 
+Marker «Ok» og trykk Enter.
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110493608865447977/image.png" alt="">
+Om du får opp denne meldinga er det berre å trykka «yes». 
+8gm ram er ikkje nødvendig med mindre du vill ha meir cache eller har menge klientar.
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110493629740494888/image.png" alt="">
+Her får du opp ei liste med alle diskar på datamaskina. 
+Du skal no velja ein som Truenas skall vera installert på. 
+Disken som du installerer på kan du ikkje bruke til noko anna en lagring av operativsystemet. 
+All data som er på disken frå før av blir og fjernet. 
+Minimumstørellsen er 8GB men Truenas anbefale at disken er 32GB. 
+Du bør ikkje bruke ein minnepenn som BOOT disk. 
+Helst bør du ha ein ekstra disk some er lik BOOT disken din slik at du kan ha ein i back up.
+Bruk mellomromsknappen for å velje disk
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110493658836385812/image.png" alt="">
+Det skjemm ei stjerne på den som er valt. Deretter trykk ok.
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110493678381826079/image.png" alt="">
+Her vel du «yes».
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110493697524633600/image.png" alt="">
+Skriv inn eit passord som du hugsar. Du har moglegheit til å endre det seinare.
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110493723374125096/image.png" alt="">
+Vel «boot via bios». No skal det komma masse tekst ikkje skru av maskina. 
+Installasjonen kan ta ei stund om du har treg minnepenn eller hardisk.
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110493741485138010/image.png" alt="">
+Når du får opp denne skjermen er installasjonen ferdig. Ta ut minepennen og deretter drykk «ok». 
+Om du ikkje tar ut minnepennen vil installasjonen starte på nytt.
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110493762116911195/image.png" alt="">
+Bla ned til «reboot system» og trykk «ok».
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110493790264897576/image.png" alt="">
+Når maskina har starta skal du få opp dette på skjermen. 
+I nokon tilfeller dår ikkje maskina IP adresse. Då må du sette ho sjølv. 
+Det gjer du ved å skrive «1» og trykke enter. 
+Derreter får du ein meny der du skal velje kva netverkskort. 
+Vanlegvis er det berre ein so skriv «1» og trykk enter. 
+Etter det skriv «n» og trykk enter. Skriv «n» igjen for å ikkje bruke DHCP. 
+Skriv «y» for å sette statisk IP. So skal du namngi netverkskortet. 
+Etter det skriv du inn IP adressa du vill bruke. 
+Etter det skriv du inn netverksmaska til dømes «255.255.255.0». 
+Skriv «n» til å konfigurere IPv6.
+Etter alt dette kan du gå inn på http://[ip adressa di]. 
+<img src="https://media.discordapp.net/attachments/662370682562281482/1110493803195928676/image.png" alt="">
+Brukarnamnet er root og passordet er passordet som du lagde tidlegare.
+
+
+
+<a href="/truenas/AD" class="button">Neste</a>
+
+        </pre>
+    </section>
+</main>
+</body>
+</html>

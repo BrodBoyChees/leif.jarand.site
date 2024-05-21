@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/deff.css">
+    <title>Leif Sigurd Nesheim</title>
+</head>
+<body>
+    <nav>
+        <div class="nav_contianer">
+            <a href="/"><p>Heim</p></a>
+            <div class="dropdown">
+                <p>Sider</p>
+                <div>
+                    <p>Truenas</p>
+                    <a href="/truenas/innstalasjon" >Instalasjon</a>
+                    <a href="/truenas/AD" >Active Direcotory</a>
+                    <a href="/truenas/lagring" >Oppsett av lagringa</a>
+                    <a href="/truenas/forlatDomene">Forlate domene i Truenas</a>
+                    <p>Windows server</p>
+                    <a href="/win-s/polecy" >Polecy</a>
+                    <p>Hyper-v</p>
+                    <a href="/hyper-v/hardisk">Viretuel hardisk</a>
+                    <p>Docker</p>
+                    <a href="/docker/phpapace-mysql" >PHP-  apache og mysql server</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+
+    <main>
+        <section>
+            <pre>
+    
+    <h1>Lage group polecy som lager snarveg til Truenas mapper</h1>
+    
+    Opne server manager og trykk tools oppe i høgre hjørne.
+    Frå tools menyen velg group polecy managment
+    Opne Forest > Domains > ditt domene.
+    Høgreklikk på (domene navn).
+    <img src="https://media.discordapp.net/attachments/662370682562281482/1110673042486612069/image.png" alt="">
+    Trykk på "create a GPO" og gi den navnet "elevar-snarveg".
+    Høgreklikk på polecyen du nettop lagde og trykk "Edit".
+    
+    <img src="https://media.discordapp.net/attachments/662370682562281482/1110675225697341561/image.png" alt="">
+    Inne på "Group polecy managment editor" går du til User Configuration > Prefrences > Windows Settings > Shortcuts.
+    Høgreklitt på "Shortcuts" trykk "new" og "shortcut"
+    <img src="https://media.discordapp.net/attachments/662370682562281482/1110675639901634580/image.png" alt="">
+    Velg "create" på "Action" feltet.
+    Gi snarvegen navnet "Felles" og sett "location" til "desctop".
+    Set "target path" til "\\truenas.lab.local\elevar".
+    Deretter trypp på "Apply" og "ok"
+    
+    Lag ein til snarveg med samme konfigurasjon men der skal navnet vere privat mappe og "target path" vere "\\truenas.lab.local\%username%".
+    
+    Lag ein til polecy som heiter lererar-snarveg og bytt up "target path" i den fyste sanrvegen med "\\truenas.lab.local\lererar".
+    
+    Du må ha lagt alle elevar og lererar under kvar sine OUar i AD. Høgreklikk på OUen elev eller lerar brukarane er i og velg "link an existing GPO" og velg elevar-snarveg eller lererar-snarveg. Gjer dete på både elev og lerar OUen.
+    
+    Neste gong du loggar inn med ein klient skal det komme to snarvegar på skrivebordet som går til ei privat mappe og ei felles mappe. 
+    Om du ikkje vill logge ut og inn igjen kan du gjere "gpupdate" i command Prompt appen.
+    
+    Om du har gjort det samma som meg skal alt funke men om du har gitt sharesene andre navn å du endre det i "target path" til snarvegen.
+    <img src="https://media.discordapp.net/attachments/662370682562281482/1110682968927781004/image.png" alt="">
+    
+    
+            </pre>
+        </section>
+    </main>
+</body>
+</html>
